@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css.css">
+    <meta charset="utf-8">
+    <meta name="description" content="My description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>P2P Network</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <header>
+                <h2>P2P Network Dashboard</h2>
+            </header>
+
+            <aside id="node1">
+                <h3 class="node-name" id="name-node1">Node name</h3>
+                <button class="btn" id="sleep1" title="Temporarily put the node to sleep">
+                  Sleep
+                </button>
+                <button class="btn reset" id="reset1" title="Reset the node to its original state">
+                  Reset
+                </button>
+                <ul class="node-state" id="state-node1"></ul>
+                <p>Node logs</p>
+                <button class="btn-clipboard" data-clipboard-target="#logs-node1">
+                  <img src="clippy.svg" width="13" alt="Copy to clipboard">
+                </button>
+                <ul class="logs" id="logs-node1">
+                </ul>
+                <div id="errors1"></div>
+            </aside>
+
+            <aside id="node2">
+                <h3 class="node-name" id="name-node2">Node name</h3>
+                <button class="btn" id="sleep2" title="Temporarily put the node to sleep">
+                  Sleep
+                </button>
+                <button class="btn reset" id="reset2" title="Reset the node to its original state">
+                  Reset
+                </button>
+                <ul class="node-state" id="state-node2"></ul>
+                <p>Node logs</p>
+                <button class="btn-clipboard" data-clipboard-target="#logs-node2">
+                  <img src="clippy.svg" width="13" alt="Copy to clipboard">
+                </button>
+                <ul class="logs" id="logs-node2">
+                </ul>
+                <div id="errors2"></div>
+            </aside>
+
+            <aside id="node3">
+                <h3 class="node-name" id="name-node3">Node name</h3>
+                <button class="btn" id="sleep3" title="Temporarily put the node to sleep">
+                  Sleep
+                </button>
+                <button class="btn reset" id="reset3" title="Reset the node to its original state">
+                  Reset
+                </button>
+                <ul class="node-state" id="state-node3"></ul>
+                <p>Node logs</p>
+                <button class="btn-clipboard" data-clipboard-target="#logs-node3">
+                  <img src="clippy.svg" width="13" alt="Copy to clipboard">
+                </button>
+                <ul class="logs" id="logs-node3">
+                </ul>
+                <div id="errors3"></div>
+            </aside>
+
+            <aside id="node4">
+              <h3 class="node-name" id="name-node4">Node name</h3>
+              <button class="btn" id="sleep4" title="Temporarily put the node to sleep">Sleep</button>
+              <button class="btn reset" id="reset4" title="Reset the node to its original state">
+                Reset
+              </button>
+              <ul class="node-state" id="state-node4"></ul>
+              <p>Node logs</p>
+              <button class="btn-clipboard" data-clipboard-target="#logs-node4">
+                <img src="clippy.svg" width="13" alt="Copy to clipboard">
+              </button>
+              <ul class="logs" id="logs-node4">
+              </ul>
+              <div id="errors4"></div>
+            </aside>
+        </section>
+        <footer>
+          <pre>
+            (Poorly) Designed by Haseeb Qureshi for <a href="https://nakamoto.com/introduction-to-cryptocurrency/">Introduction to Cryptocurrencies</a>
+          </pre>
+        </footer>
+    </main>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script src="dist/main.js"></script>

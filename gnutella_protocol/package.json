@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "webpack": "cd ./frontend; webpack --mode production"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "dependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "browserslist": [
+    "cover 99.75%"
+  ]
+}
