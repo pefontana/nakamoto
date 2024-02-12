@@ -24,17 +24,11 @@ if MY_PORT < 1024:
     raise Exception("Port number must be >= 1024")
 
 # Randomly choose a human-readable name
-names = open("names.txt", "r").read().split("\n")
-MY_NAME = random.choice(names)
+names = ["Francescoli", "Gallardo", "Labruna", "Cavenaghi", "Enzo Perez"]
+MY_NAME = names[MY_PORT % 10]
 
 # Message log
 LOGS = []
-
-#################################################################
-#################################################################
-############# BELOW IS THE CODE THAT MATTERS TO YOU #############
-#################################################################
-#################################################################
 
 # Message types
 PING = "PING"
@@ -89,8 +83,49 @@ def respond(
     Returns:
         Nothing
     '''
-    # TODO: Your code here!
-    pass
+    # Check if we already recieved this message
+    if (msg_id, msg_originator) in RECEIVED_MESSAGES:
+        return
+    else:
+        RECEIVED_MESSAGES.add((msg_id, msg_originator))
+
+    if msg_originator == MY_PORT:
+        return
+    
+    # Update last heard from
+    update_last_heard_from(msg_forwarder)
+    
+    if msg_type == PING:
+        pong = {
+            "msg_type": PONG,
+            "ttl":  0,
+            "data": None,
+        }
+        send_message_to(msg_forwarder, pong, False)
+    elif msg_type == PONG:
+        pass
+    elif msg_type == PRIME:
+        # Add msg_originator to peer list
+        update_last_heard_from(msg_originator)
+
+        # Update biggest prime
+        if STATE["biggest_prime"] < data:
+            STATE["biggest_prime"] = data
+            STATE["biggest_prime_sender"] = msg_originator
+
+        # foward msg
+        if ttl > 0:
+            prime = {
+            "msg_type": PRIME,
+            "msg_originator": msg_originator,
+            "ttl":  ttl - 1,
+            "data": data,
+            }
+
+            for peer in STATE["peers"]:
+                send_message_to(peer, prime, True)
+
+    return
 
 
 def update_last_heard_from(peer: int):
@@ -138,12 +173,6 @@ def send_message_to(peer: int, message: dict, forwarded: bool):
         log_error(e)
 
     STATE["msg_id"] += 1
-
-#################################################################
-#################################################################
-######## YOU CAN IGNORE THE REST OF THE CODE IF YOU WANT ########
-#################################################################
-#################################################################
 
 
 @only_if_awake(STATE)
